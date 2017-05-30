@@ -1,0 +1,54 @@
+#!/bin/bash
+DIR=/eos/uscms/store/user/ohindric/MC/13TEV/RunIIFall15_76_25ns/NTuple_V8/miniaod2_try_1
+ls $DIR/QCD_Pt-30to50_EMEnriched_TuneCUETP8M1_13TeV_pythia8_RunIIFall15MiniAODv1-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/ur*root > QCDEM50.txt
+ls $DIR/QCD_Pt-50to80_EMEnriched_TuneCUETP8M1_13TeV_pythia8_RunIIFall15MiniAODv1-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/ur*root > QCDEM80.txt
+
+DIR=/eos/uscms/store/user/ohindric/MC/13TEV/RunIISpring16_80X/NTuple_V8/try_1
+ls $DIR/QCD_Pt-80to120_EMEnriched_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv1-PUSpring16_80X_mcRun2_asymptotic_2016_v3-v1/ur*root > QCDEM120.txt
+ls $DIR/QCD_Pt-120to170_EMEnriched_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv1-PUSpring16_80X_mcRun2_asymptotic_2016_v3-v1/ur*root > QCDEM170.txt
+ls $DIR/QCD_Pt-170to300_EMEnriched_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv1-PUSpring16_80X_mcRun2_asymptotic_2016_v3-v1/ur*root > QCDEM300.txt
+ls $DIR/QCD_Pt-300toInf_EMEnriched_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDEMInf.txt
+
+ls $DIR/QCD_Pt-30to50_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDMu50.txt
+ls $DIR/QCD_Pt-50to80_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDMu80.txt
+ls $DIR/QCD_Pt-80to120_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDMu120.txt
+ls $DIR/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDMu170.txt
+ls $DIR/QCD_Pt-170to300_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDMu300.txt
+ls $DIR/QCD_Pt-300to470_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0_ext1-v1/ur*root > QCDMu470.txt
+ls $DIR/QCD_Pt-470to600_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDMu600.txt
+ls $DIR/QCD_Pt-470to600_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0_ext1-v1/ur*root >> QCDMu600.txt
+ls $DIR/QCD_Pt-600to800_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDMu800.txt
+ls $DIR/QCD_Pt-600to800_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0_ext1-v1/ur*root >> QCDMu800.txt
+ls $DIR/QCD_Pt-800to1000_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDMu1000.txt
+ls $DIR/QCD_Pt-800to1000_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0_ext1-v1/ur*root >> QCDMu1000.txt
+ls $DIR/QCD_Pt-1000toInf_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > QCDMuInf.txt
+
+
+ls $DIR/WJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > WJets.txt
+ls $DIR/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0_ext1-v1/ur*root > DYJets.txt
+
+ls $DIR/ST_s-channel_4f_leptonDecays_13TeV-amcatnlo-pythia8_TuneCUETP8M1_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > STs.txt
+ls $DIR/ST_t-channel_antitop_4f_leptonDecays_13TeV-powheg-pythia8_TuneCUETP8M1_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > STt.txt
+ls $DIR/ST_tW_antitop_5f_NoFullyHadronicDecays_13TeV-powheg_TuneCUETP8M1_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > Wtbar.txt
+ls $DIR/ST_tW_top_5f_NoFullyHadronicDecays_13TeV-powheg_TuneCUETP8M1_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > Wt.txt
+
+#ls $DIR//ur*root > tt_aMCatNLO.txt
+ls $DIR/TT_TuneCUETP8M1_13TeV-powheg-pythia8_RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0_ext3-v1/ur*root > tt_PowhegP8.txt
+ls $DIR/TT_TuneEE5C_13TeV-powheg-herwigpp_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > tt_PowhegHpp.txt
+
+#ls $DIR/TTJets_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/ur*root > tt_Madgraph.txt
+#ls $DIR/TT_TuneCUETP8M1_13TeV-amcatnlo-pythia8_RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/ur*root > tt_MCatNLO.txt
+#ls $DIR/TT_TuneEE5C_13TeV-amcatnlo-herwigpp_RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/ur*root > tt_MCatNLOHpp.txt
+
+#DIR=/eos/uscms/store/user/verzetti/MC/13TEV/RunIIFall15_76_25ns/NTuple_V8/miniaod2_try_2
+ls $DIR/TT_TuneCUETP8M1_13TeV-powheg-scaledown-pythia8_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > tt_scaledown_PowhegP8.txt
+ls $DIR/TT_TuneCUETP8M1_13TeV-powheg-scaleup-pythia8_RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/ur*root > tt_scaleup_PowhegP8.txt
+#ls $DIR/TT_TuneCUETP8M1_mtop1695_13TeV-powheg-pythia8_RunIIFall15MiniAODv1-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/ur*root > tt_mtop1695_PowhegP8.txt
+#ls $DIR/TT_TuneCUETP8M1_mtop1755_13TeV-powheg-pythia8_RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/ur*root > tt_mtop1755_PowhegP8.txt
+
+DDIR=/eos/uscms/store/user/ohindric/DATA/2016_13TEV/NTuple_V8/try_1
+ls $DDIR/SingleMuon_Run2016B-PromptReco-v2/ur*root > DATAMU.txt
+ls $DDIR/SingleElectron_Run2016B-PromptReco-v2/ur*root > DATAEL.txt
+
+
+sed -i 's#/eos/uscms#root://cmseos.fnal.gov/#' *.txt
