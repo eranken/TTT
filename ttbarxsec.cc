@@ -237,6 +237,7 @@ void ttbar::begin()
 	TDirectory* dir_gen = outFile_.mkdir("GEN");
 	dir_gen->cd();
 	gen1d.AddHist("dileppttop", 500, 0., 1000, "p_{t}(t)+p_t(#bar{t}) [GeV]", "Events");
+	gen1d.AddHist("dilepInvMassTop", 500, 0., 1000, "Inv Mass (tt) [GeV]", "Events");
 	gen1d.AddHist("dilepptb", 500, 0., 1000, "p_{t}(b)+p_t(#bar{b})  [GeV]", "Events");
 	gen1d.AddHist("dilepptW1", 500, 0., 1000, "p_{t}(W1) [GeV]", "Events");
 	gen1d.AddHist("dilepptW2", 500, 0., 1000, "p_{t}(W2) [GeV]", "Events");
@@ -763,6 +764,7 @@ void ttbar::SelectGenParticles(URStreamer& event)
 		TLorentzVector W2 = gps[4]-gps[5];
 
 		gen1d["dileppttop"]->Fill(gentq.Pt()+gentqbar.Pt(), weight);
+		gen1d["dilepInvMassTop"]->Fill(sqrt(gentq.Pt()**2+gentqbar.Pt()**2), weight);
 		gen1d["dilepptb"]->Fill(gps[0].Pt()+gps[5].Pt(), weight);
 		gen1d["dilepptW1"]->Fill(W1.Pt(), weight);
 		gen1d["dilepptW2"]->Fill(W2.Pt(), weight);
