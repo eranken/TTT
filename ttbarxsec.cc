@@ -764,7 +764,7 @@ void ttbar::SelectGenParticles(URStreamer& event)
 		TLorentzVector W2 = gps[4]-gps[5];
 
 		gen1d["dileppttop"]->Fill(gentq.Pt()+gentqbar.Pt(), weight);
-		gen1d["dilepInvMassTop"]->Fill(pow(sqrt(gentq.Pt(),2)+pow(gentqbar.Pt(),2), weight);
+		gen1d["dilepInvMassTop"]->Fill(sqrt(pow(gentq.Pt(),2)+pow(gentqbar.Pt(),2)), weight);
 		gen1d["dilepptb"]->Fill(gps[0].Pt()+gps[5].Pt(), weight);
 		gen1d["dilepptW1"]->Fill(W1.Pt(), weight);
 		gen1d["dilepptW2"]->Fill(W2.Pt(), weight);
