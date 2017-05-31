@@ -784,7 +784,7 @@ void ttbar::SelectGenParticles(URStreamer& event)
 	}
 
 }
-Cs ZZ
+
 void ttbar::SelectRivetPS(URStreamer& event)
 {
 	const vector<Rivetpl>& rivgens = event.RivetPLs();
