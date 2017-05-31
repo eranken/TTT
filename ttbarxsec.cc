@@ -8,8 +8,6 @@
 
 using namespace std;
 
-//This comment is testing that git is working properly and should be deleted 
-
 ttbar::ttbar(const std::string output_filename):
 	AnalyzerBase("ttbar", output_filename),
 	FULLHAD(false),
