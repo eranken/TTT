@@ -8,6 +8,8 @@
 
 using namespace std;
 
+//oh hi
+
 ttbar::ttbar(const std::string output_filename):
 	AnalyzerBase("ttbar", output_filename),
 	FULLHAD(false),
@@ -237,7 +239,8 @@ void ttbar::begin()
 	TDirectory* dir_gen = outFile_.mkdir("GEN");
 	dir_gen->cd();
 	gen1d.AddHist("dileppttop", 500, 0., 1000, "p_{t}(t)+p_t(#bar{t}) [GeV]", "Events");
-	gen1d.AddHist("dilepInvMassTop", 500, 0., 1000, "Inv Mass (tt) [GeV]", "Events");
+	gen1d.AddHist("tmass", 800, 0., 400, "M(t) [GeV]", "Events");
+	gen1d.AddHist("dilep_tmass", 800, 0., 400, "M(t) [GeV]", "Events");
 	gen1d.AddHist("dilepptb", 500, 0., 1000, "p_{t}(b)+p_t(#bar{b})  [GeV]", "Events");
 	gen1d.AddHist("dilepptW1", 500, 0., 1000, "p_{t}(W1) [GeV]", "Events");
 	gen1d.AddHist("dilepptW2", 500, 0., 1000, "p_{t}(W2) [GeV]", "Events");
@@ -269,7 +272,7 @@ void ttbar::begin()
 
 	TDirectory* dir_truth = outFile_.mkdir("TRUTH");
 	dir_truth->cd();
-	truth1d.AddHist("dileppttop", 500, 0., 1000, "p_{t}(t)+p_t(#bar{t}) [GeV]", "Events");
+	truth1d.AddHist("dileppterr",500, 0., 1000, "p_{t}(t)+p_t(#bar{t}) reco-gen [GeV]", "Events");
 	truth1d.AddHist("counter", 20, 0., 20., "counter", "Events");
 	truth1d.AddHist("npu", 100, 0., 100., "npu", "Events");
 	truth1d.AddHist("npuorig", 100, 0., 100., "npuorig", "Events");
@@ -624,6 +627,9 @@ void ttbar::begin()
 
 	TDirectory* dir_reco = outFile_.mkdir("RECO");
 	dir_reco->cd();
+	reco1d.AddHist("pttops", 500, 0., 1000, "bestper p_{t}(t)+p_t(#bar{t}) [GeV]", "Events");
+	reco1d.AddHist("thadmass", 500, 0., 1000, "M(THad)", "Events");
+	reco1d.AddHist("dilep_thadmass", 500, 0., 1000, "M(THad) [GeV]", "Events");
 	reco1d.AddHist("counter", 20, 0., 20., "counter", "Events");
 	reco1d.AddHist("counter_test", 20, 0., 20., "counter", "Events");
 	reco2d.AddHist("Wmasshad_tmasshad", 500, 0., 500., 500, 0., 500, "M(W) [GeV]", "M(t) [GeV]");
@@ -722,6 +728,8 @@ void ttbar::SelectGenParticles(URStreamer& event)
 	if(gps[2].pdgId() == -11 || gps[2].pdgId() == -13 || gps[2].pdgId() == -15){tlep = true;}
 	if(gps[7].pdgId() == 11 || gps[7].pdgId() == 13 || gps[7].pdgId() == 15){tbarlep = true;}
 
+	gen1d["tmass"]->Fill(gentq.M(), weight);
+	gen1d["tmass"]->Fill(gentqbar.M(), weight);
 
 
 	if(STUDENT)
@@ -757,14 +765,16 @@ void ttbar::SelectGenParticles(URStreamer& event)
 		gentqlep = gentqbar;
 	}
 
-	if(tlep && tbarlep)
+	if(tem && tbarem)
 	{
 		FULLLEP = true;
 		TLorentzVector W1 = gps[0]-gps[1];
 		TLorentzVector W2 = gps[4]-gps[5];
 
+		gen1d["dilep_tmass"]->Fill(gentq.M(), weight);
+		gen1d["dilep_tmass"]->Fill(gentqbar.M(), weight);
+
 		gen1d["dileppttop"]->Fill(gentq.Pt()+gentqbar.Pt(), weight);
-		gen1d["dilepInvMassTop"]->Fill(sqrt(pow(gentq.Pt(),2)+pow(gentqbar.Pt(),2)), weight);
 		gen1d["dilepptb"]->Fill(gps[0].Pt()+gps[5].Pt(), weight);
 		gen1d["dilepptW1"]->Fill(W1.Pt(), weight);
 		gen1d["dilepptW2"]->Fill(W2.Pt(), weight);
@@ -1263,6 +1273,7 @@ void ttbar::SelectRecoParticles(URStreamer& event)
 		}
 	}
 
+
 	if(SEMILEPACC)
 	{
 		rightper.MET(&met);
@@ -1555,8 +1566,17 @@ void ttbar::ttanalysis(URStreamer& event)
 	if(BTAGMODE){btageff.Fill(bestper, nvtx, bestper.IsTHadCorrect(rightper), bestper.IsBLepCorrect(rightper), weight);}
 	if(BTAGMODE && (dynamic_cast<IDJet*>(bestper.BLep())->csvIncl() < B_MEDIUM && dynamic_cast<IDJet*>(bestper.BHad())->csvIncl() < B_MEDIUM)) return;
 	//Fill reconstructed hists
-	truth1d["dileppttop"]->Fill(bestper.TLep().Pt(), weight);
 	ttp_all.Fill(bestper, weight);
+
+	//Evan's nonsense
+	reco1d["pttops"]->Fill(bestper.TLep().Pt()+bestper.TLep().Pt(), weight);
+	reco1d["thadmass"]->Fill(bestper.THad().M(), weight);
+	if(FULLLEP)reco1d["dilep_thadmass"]->Fill(bestper.THad().M(), weight);
+	reco1d["pttops"]->Fill(bestper.TLep().Pt()+bestper.TLep().Pt(), weight);
+	truth1d["dileppterr"]->Fill(bestper.TLep().Pt()+bestper.TLep().Pt()-gentq.Pt()-gentbar.Pt(), weight);
+	if(FULLLEP)cout<<bestper.TLep().M()<<"_"<<bestper.THad().M()<<"_"<<bestper.TT().Pz()<<endl;
+	//
+
 	response.FillAll("thardpt", bestper.THard().Pt(), weight);
 	response.FillAll("tsoftpt", bestper.TSoft().Pt(), weight);
 	response.FillAll("nobin", bestper.THad().Pt(), weight);
@@ -2179,6 +2199,7 @@ void ttbar::analyze()
 		}
 
 		SelectRecoParticles(event);
+
 
 		if(isDA && Abs(event.trigger().HLT_IsoMu24()) != 1) {cout << "TRIGGER UNDEFINED IsoMu24:" << event.trigger().HLT_IsoMu24() << endl; }
 		if(isDA && Abs(event.trigger().HLT_IsoTkMu24()) != 1) {cout << "TRIGGER UNDEFINED: TKMu24" << event.trigger().HLT_IsoTkMu24() << endl; }
